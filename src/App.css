@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: gray;
+  padding: 10px;
+  color: white;
+}
+
+.link {
+  margin-right: 10px;
+}
+
+.link:last-child {
+  margin-right: 0;
+}
