@@ -6,7 +6,9 @@ import "./HomePage.css";
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const debounced = useDebounce(search);
-  const { isLoading, isError, data } = useSearchUsersQuery(debounced);
+  const { isLoading, isError, data } = useSearchUsersQuery(debounced, {
+    skip: debounced.length < 3,
+  });
 
   useEffect(() => {
     console.log(search);
@@ -24,7 +26,13 @@ export default function HomePage() {
             setSearch(e.target.value);
           }}
         />
-        <div className="search__dropdown">LOREM</div>
+        <ul className="search__dropdown">
+          {data?.map((el) => (
+            <li key={el.id} className="search__dropdown-item">
+              {el.login}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
